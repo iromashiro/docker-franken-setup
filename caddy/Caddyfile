@@ -1,0 +1,10 @@
+{
+    frankenphp
+    auto_https off
+}
+
+//change url & dockername
+{url} {
+    tls /etc/caddy/ssl/mekab-bundle.crt /etc/caddy/ssl/mekab.key
+    reverse_proxy {dockername}:8000
+}
