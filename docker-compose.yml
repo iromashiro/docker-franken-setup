@@ -1,0 +1,28 @@
+version: "3.9"
+
+networks:
+  caddy:
+    name: caddy  # nama global, agar betul-betul 'caddy'
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+services:
+  caddy:
+    image: dunglas/frankenphp
+    restart: unless-stopped
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+      # Sertifikat manual (pastikan path di host sesuai)
+      - /etc/ssl/certs/mekab.crt:/etc/caddy/ssl/mekab.crt:ro
+      - /etc/ssl/certs/mekab-bundle.crt:/etc/caddy/ssl/mekab-bundle.crt:ro
+      - /etc/ssl/private/mekab.key:/etc/caddy/ssl/mekab.key:ro
+    networks:
+      - caddy  # cukup refer ke jaringan "caddy"
