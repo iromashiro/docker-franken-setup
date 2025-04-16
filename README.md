@@ -45,7 +45,6 @@ Caddy will automatically obtain TLS certificates and proxy traffic to the Larave
 └── example-for-laravel/
     ├── Dockerfile         # PHP‑FPM & Composer
     ├── docker-compose.yml # Laravel app, Nginx, DB
-    └── src/               # Place your Laravel code here
 ```
 
 ---
